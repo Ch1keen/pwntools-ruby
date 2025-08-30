@@ -17,7 +17,7 @@ So this is an attempt to create such library.
 
 Would try to have consistent naming with original pwntools, and do things in Ruby style.
 
-# Example Usage
+## Example Usage
 
 Here's an exploitation for `start` which is a challenge on [pwnable.tw](https://pwnable.tw).
 
@@ -46,10 +46,15 @@ z.write payload
 z.interact
 ```
 
-More features and details can be found in the
-[documentation](http://www.rubydoc.info/github/peter50216/pwntools-ruby/master/frames).
+## Documentation
 
-# Installation
+More features and details can be found in the
+[documentation](http://www.rubydoc.info/github/Ch1keen/pwntools-ruby/master/frames).
+
+You might want a local copy of the documentation. First, clone the repository, and run `rdoc`.
+You can find `doc/index.html` in the repository, this is the index page of the document.
+
+## Installation
 
 ### Install the latest release:
 ```sh
@@ -86,16 +91,16 @@ cd build
 sudo make install
 ```
 
-# Supported Features
+## Supported Features
 
-## Architectures
+### Architectures
 
 - [x] i386
 - [x] amd64
 - [ ] arm
 - [ ] thumb
 
-## Modules
+### Modules
 
 - [x] context
 - [x] asm
@@ -114,17 +119,22 @@ sudo make install
   - [x] cyclic
   - [x] fiddling
 
-# Development
+## Development
 ```sh
-git clone https://github.com/peter50216/pwntools-ruby
+git clone https://github.com/Ch1keen/pwntools-ruby
 cd pwntools-ruby
 bundle
 bundle exec rake
 ```
 
-# Note to irb users
+## Note to irb users
 irb defines `main.context`.
 
 For the ease of exploit development in irb, that method would be removed if you use `require 'pwn'`.
 
 You can still get the `IRB::Context` by `irb_context`.
+
+## See Also
+
+[Ronin](https://ronin-rb.dev) is a Ruby toolkit for security researcher and development, providing useful functions.
+
