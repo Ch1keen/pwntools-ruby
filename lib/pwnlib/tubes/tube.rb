@@ -310,6 +310,57 @@ module Pwnlib
         write(s)
       end
 
+      # Sends the given object after receiving data until +delims+.
+      # It's a combination of +recvuntil(delim)+ and +send(data)+.
+      #
+      # @param [String] delim
+      #   A string contains bytes, which ends string in +delim+, received from the tube.
+      # @param [Object] obj
+      def sendafter(delim, obj, timeout: nil)
+        recvuntil(delim, timeout: timeout)
+        send(obj)
+      end
+      alias writeafter sendafter
+
+      # Sends the given object with +context.newline+, but after receiving data until +delims+.
+      # It's a combination of +recvuntil(delim)+ and +sendline(data)+.
+      #
+      # @param [String] delim
+      #   A string contains bytes, which ends string in +delim+, received from the tube.
+      # @param [Object] obj
+      #   The object to be sent after receiving the +delim+.
+      def sendlineafter(delim, obj, timeout: nil)
+        recvuntil(delim, timeout: timeout)
+        sendline(obj)
+      end
+      alias writelineafter sendlineafter
+
+      # Receives data until +delims+ and sends the given object.
+      # It's a combination of +sendline(data)+ and +recvuntil(delim)+.
+      #
+      # @param [String] delim
+      #   A string contains bytes, which ends string in +delim+, received from the tube.
+      # @param [Object] obj
+      #   The object to be sent.
+      def sendthen(delim, data, timeout: nil)
+        send(data)
+        return recvuntil(delim, timeout: timeout)
+      end
+      alias writethen sendthen
+
+      # Receives data until +delims+ and sends the given object with +context.newline+.
+      # It's a combination of +sendline(data)+ and +recvuntil(delim)+.
+      #
+      # @param [String] delim
+      #   A string contains bytes, which ends string in +delim+, received from the tube.
+      # @param [Object] obj
+      #   The object to be sent.
+      def sendlinethen(delim, data, timeout: nil)
+        sendline(data)
+        return recvuntil(delim, timeout: timeout)
+      end
+      alias writelinethen sendlinethen
+
       # Sends the given object(s).
       # The difference with +IO#puts+ is using +context.newline+ as default newline.
       #
