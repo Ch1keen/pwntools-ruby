@@ -51,7 +51,7 @@ z.interact
 More features and details can be found in the
 [documentation](http://www.rubydoc.info/github/Ch1keen/pwntools-ruby/master/frames).
 
-You might want a local copy of the documentation. First, clone the repository, and run `rdoc`.
+You might want a local copy of the documentation. First, clone the repository, and run `yard`.
 You can find `doc/index.html` in the repository, this is the index page of the document.
 
 ## Installation
